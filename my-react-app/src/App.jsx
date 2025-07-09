@@ -9,6 +9,8 @@ function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
+  const API = process.env.REACT_APP_API_URL || "https://backend-8z1j.onrender.com";
+
   useEffect(() => {
     if (errorMsg || successMsg) {
       const timer = setTimeout(() => {
@@ -26,10 +28,11 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg(""); // Clear old error
+    
 
     const endpoint = isLogin
-      ? `${process.env.REACT_APP_API_URL}/api/login`
-      : `${process.env.REACT_APP_API_URL}/api/signup`;
+      ? `${API}/api/login`
+      : `${API}/api/signup`;
 
     try {
       const res = await axios.post(endpoint, form);
