@@ -28,11 +28,11 @@ function App() {
     setErrorMsg(""); // Clear old error
 
     const endpoint = isLogin
-      ? "http://localhost:5000/api/login"
-      : "http://localhost:5000/api/signup";
+      ? "`${process.env.REACT_APP_API_URL}/api/login"
+      : "`${process.env.REACT_APP_API_URL}/api/signup";
 
     try {
-      const res = await axios.post(endpoint, form);
+      const res = await axios.post(endpoint, form,{ withCredentials: true });
       if (res.data?.username) {
         setUser({ ...res.data, password: form.password });
         setSuccessMsg(isLogin ? "Login successful!" : "Signup successful!");
