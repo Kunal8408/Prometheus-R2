@@ -28,8 +28,8 @@ function App() {
     setErrorMsg(""); // Clear old error
 
     const endpoint = isLogin
-      ? "`${process.env.REACT_APP_API_URL}/api/login"
-      : "`${process.env.REACT_APP_API_URL}/api/signup";
+      ? `${process.env.REACT_APP_API_URL}/api/login`
+      : `${process.env.REACT_APP_API_URL}/api/signup`;
 
     try {
       const res = await axios.post(endpoint, form,{ withCredentials: true });
