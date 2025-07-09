@@ -32,7 +32,7 @@ function App() {
       : `${process.env.REACT_APP_API_URL}/api/signup`;
 
     try {
-      const res = await axios.post(endpoint, form,{ withCredentials: true });
+      const res = await axios.post(endpoint, form);
       if (res.data?.username) {
         setUser({ ...res.data, password: form.password });
         setSuccessMsg(isLogin ? "Login successful!" : "Signup successful!");
